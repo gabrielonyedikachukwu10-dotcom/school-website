@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Mater Dei Erudite School Website
 
 ## Run Locally
@@ -22,3 +23,7 @@ Replace placeholder content in these places:
 - `public/sitemap.xml` and `public/robots.txt` when the final domain name is ready.
 
 The GitHub Pages base path is set in `vite.config.js` as `/school-website/`. Change it there if your repository name changes.
+=======
+# school-website
+React + Vite school website with a client-side admin panel for managing students, teachers, events, and site content using local Storage
+>>>>>>> 1322a63b3161fe187cbd900dab0a2bb9c99a8e4d
