@@ -1,0 +1,45 @@
+[
+  {
+    "id": 1,
+    "type": "image",
+    "src": "/images/campus.png",
+    "alt": "Mater Dei Erudite School campus building with blue roof"
+  },
+  {
+    "id": 2,
+    "type": "image",
+    "src": "/images/computer-lab.png",
+    "alt": "Students learning computer studies in the computer laboratory"
+  },
+  {
+    "id": 3,
+    "type": "image",
+    "src": "/images/students-yard.png",
+    "alt": "Students gathered happily in the school compound"
+  },
+  {
+    "id": 4,
+    "type": "image",
+    "src": "/images/graduation.jpeg",
+    "alt": "Students receiving certificates during a school graduation ceremony"
+  },
+  {
+    "id": 5,
+    "type": "image",
+    "src": "/images/science-lab.jpeg",
+    "alt": "Secondary school students performing a science practical in the laboratory"
+  },
+  {
+    "id": 6,
+    "type": "image",
+    "src": "/images/founders.jpeg",
+    "alt": "Founders of Mater Dei Erudite School seated at a school event"
+  },
+  {
+    "id": 7,
+    "type": "video",
+    "src": "",
+    "poster": "/images/campus.png",
+    "alt": "Placeholder for school video"
+  }
+]

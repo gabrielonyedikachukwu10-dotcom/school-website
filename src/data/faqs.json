@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "question": "What are the school fees and payment options?",
+    "answer": "Please contact the school office for the current fee structure. Online payment is coming soon, and parents can call or send a WhatsApp message for payment guidance."
+  },
+  {
+    "id": 2,
+    "question": "What is the admission process?",
+    "answer": "Parents submit the application form and required documents, applicants attend an assessment or interview, then successful applicants receive an admission offer and complete registration."
+  },
+  {
+    "id": 3,
+    "question": "What are the school hours?",
+    "answer": "The school opens Monday to Friday from 7:00am to 6:30pm."
+  },
+  {
+    "id": 4,
+    "question": "Do you offer boarding?",
+    "answer": "Boarding information is not available in version one. Please contact the school office for current arrangements."
+  },
+  {
+    "id": 5,
+    "question": "What curriculum do you follow?",
+    "answer": "Mater Dei Erudite School follows a strong Nigerian school curriculum with attention to academic excellence, character development and practical learning."
+  },
+  {
+    "id": 6,
+    "question": "How do I contact the school?",
+    "answer": "You can call 08034826741 or 07060821822, send a WhatsApp message to 09048761530, or email materdeieruditeschool@gmail.com."
+  },
+  {
+    "id": 7,
+    "question": "Do you admit students into nursery, primary and secondary classes?",
+    "answer": "Yes. The school admits learners into Nursery/Early Years, Primary, Junior Secondary and Senior Secondary classes."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Welcome to Mater Dei Erudite School Website",
+    "date": "2026-05-27",
+    "excerpt": "We’re excited to launch our new website. Stay here for updates on admissions, events, and student achievements."
+  },
+  {
+    "id": 2,
+    "title": "Admissions for 2025/2026 Academic Session Now Open",
+    "date": "2026-05-20",
+    "excerpt": "Applications are now open. Visit our Admissions page to see requirements and download the form."
+  },
+  {
+    "id": 3,
+    "title": "Our Commitment to Excellence and Character",
+    "date": "2026-05-15",
+    "excerpt": "At Mater Dei Erudite, we focus on academic excellence and strong character. Learn more on our About page."
+  }
+]

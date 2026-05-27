@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- TODO: Replace https://example.com with the real domain name here. -->
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/about</loc></url>
+  <url><loc>https://example.com/admissions</loc></url>
+  <url><loc>https://example.com/academics</loc></url>
+  <url><loc>https://example.com/gallery</loc></url>
+  <url><loc>https://example.com/news</loc></url>
+  <url><loc>https://example.com/events</loc></url>
+  <url><loc>https://example.com/contact</loc></url>
+  <url><loc>https://example.com/faq</loc></url>
+  <url><loc>https://example.com/pay-fees</loc></url>
+  <url><loc>https://example.com/student-portal</loc></url>
+  <url><loc>https://example.com/privacy</loc></url>
+  <url><loc>https://example.com/terms</loc></url>
+</urlset>

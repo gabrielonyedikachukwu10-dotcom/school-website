@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mater Dei Erudite School</title>
+    <script>
+      // GitHub Pages fallback for React Router.
+      const base = '/school-website/';
+      const path = window.location.pathname.replace(base, '');
+      window.location.replace(`${base}?redirect=/${path}${window.location.search}${window.location.hash}`);
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>

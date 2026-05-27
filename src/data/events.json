@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Admission Open Day",
+    "date": "2026-06-12",
+    "time": "10:00 AM",
+    "description": "Parents are invited to visit the school, meet our team, and learn about the admission process."
+  },
+  {
+    "id": 2,
+    "title": "End of Term Examination",
+    "date": "2026-07-01",
+    "time": "8:00 AM",
+    "description": "Students begin their end of term examinations across nursery, primary and secondary classes."
+  },
+  {
+    "id": 3,
+    "title": "Career and Character Day",
+    "date": "2026-07-18",
+    "time": "11:00 AM",
+    "description": "A student development event focused on discipline, confidence, purpose and future careers."
+  },
+  {
+    "id": 4,
+    "title": "Parents Meeting",
+    "date": "2026-08-08",
+    "time": "12:00 PM",
+    "description": "Parents and guardians meet with school leadership for updates and academic progress discussions."
+  }
+]
