@@ -1,10 +1,11 @@
-import { LockKeyhole } from 'lucide-react';
 import { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useAdmin } from '../context/AdminContext';
+import { useSiteSettings } from '../../context/SiteSettingsContext';
 
 export default function AdminLogin() {
   const { isAuthenticated, login } = useAdmin();
+  const { logoUrl, siteName } = useSiteSettings();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -12,20 +13,23 @@ export default function AdminLogin() {
 
   if (isAuthenticated) return <Navigate to="/admin/dashboard" replace />;
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
-    if (!login(password)) {
-      setError('Incorrect password. Please try again.');
+    setError('');
+    try {
+      await login(password);
+      navigate(location.state?.from || '/admin/dashboard', { replace: true });
+    } catch (error) {
+      setError(error.message || 'Incorrect password. Please try again.');
       return;
     }
-    navigate(location.state?.from || '/admin/dashboard', { replace: true });
   };
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-blue-50 px-4 dark:bg-slate-950">
       <form onSubmit={submit} className="w-full max-w-md rounded-3xl bg-white p-6 shadow-soft dark:bg-slate-900">
         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-blue text-white">
-          <LockKeyhole aria-hidden="true" />
+          <img src={logoUrl} alt={`${siteName} logo`} className="h-12 w-12 rounded-xl bg-white object-contain" />
         </div>
         <h1 className="font-heading text-3xl font-bold text-slate-950 dark:text-white">Admin Login</h1>
         <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Enter the principal password to manage website content.</p>

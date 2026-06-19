@@ -1,7 +1,7 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { apiRequest } from '../utils/api';
 
 const AdminContext = createContext(null);
-const PASSWORD = '@principal codex';
 
 const sectionNames = [
   'students',
@@ -31,74 +31,99 @@ const labels = {
   settings: 'Settings'
 };
 
-const createPlaceholder = (section) => [
-  {
-    id: crypto.randomUUID(),
-    title: `${labels[section]} sample item`,
-    description: `Placeholder ${labels[section].toLowerCase()} record. Edit or delete this from the admin panel.`,
-    date: new Date().toISOString().slice(0, 10)
-  }
-];
-
-const getStored = (key, fallback) => {
-  const stored = localStorage.getItem(key);
-  return stored ? JSON.parse(stored) : fallback;
-};
-
 export function AdminProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(() => localStorage.getItem('admin-auth') === 'true');
-  const [data, setData] = useState(() =>
-    sectionNames.reduce((acc, section) => {
-      acc[section] = getStored(`admin-${section}`, createPlaceholder(section));
-      return acc;
-    }, {})
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(() => Boolean(localStorage.getItem('admin-token')));
+  const [adminUser, setAdminUser] = useState(() => {
+    const stored = localStorage.getItem('admin-user');
+    return stored ? JSON.parse(stored) : null;
+  });
+  const [data, setData] = useState(() => sectionNames.reduce((acc, section) => ({ ...acc, [section]: [] }), {}));
+  const [loading, setLoading] = useState(false);
 
-  const persistSection = (section, nextItems) => {
-    localStorage.setItem(`admin-${section}`, JSON.stringify(nextItems));
-    setData((current) => ({ ...current, [section]: nextItems }));
+  const loadSection = async (section) => {
+    const items = await apiRequest(`/api/admin/${section}`);
+    setData((current) => ({ ...current, [section]: items }));
+    return items;
   };
 
-  const login = (password) => {
-    if (password !== PASSWORD) return false;
-    localStorage.setItem('admin-auth', 'true');
+  const loadAllSections = async () => {
+    if (!localStorage.getItem('admin-token')) return;
+    setLoading(true);
+    try {
+      const entries = await Promise.all(sectionNames.map(async (section) => [section, await apiRequest(`/api/admin/${section}`)]));
+      setData(Object.fromEntries(entries));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated) loadAllSections().catch(() => logout());
+  }, [isAuthenticated]);
+
+  const login = async (password, email = 'principal@materdei.local') => {
+    const response = await apiRequest('/api/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password })
+    });
+    localStorage.setItem('admin-token', response.token);
+    localStorage.setItem('admin-user', JSON.stringify(response.user));
+    setAdminUser(response.user);
     setIsAuthenticated(true);
+    await loadAllSections();
     return true;
   };
 
   const logout = () => {
-    localStorage.removeItem('admin-auth');
+    localStorage.removeItem('admin-token');
+    localStorage.removeItem('admin-user');
+    setAdminUser(null);
     setIsAuthenticated(false);
   };
 
-  const addItem = (section, item) => {
-    const nextItems = [{ ...item, id: crypto.randomUUID() }, ...data[section]];
-    persistSection(section, nextItems);
+  const addItem = async (section, item) => {
+    const created = await apiRequest(`/api/admin/${section}`, {
+      method: 'POST',
+      body: JSON.stringify(item)
+    });
+    setData((current) => ({ ...current, [section]: [created, ...(current[section] || [])] }));
+    return created;
   };
 
-  const editItem = (section, id, item) => {
-    const nextItems = data[section].map((record) => (record.id === id ? { ...record, ...item } : record));
-    persistSection(section, nextItems);
+  const editItem = async (section, id, item) => {
+    const response = await apiRequest(`/api/admin/${section}/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(item)
+    });
+    setData((current) => ({
+      ...current,
+      [section]: (current[section] || []).map((record) => (record.id === id ? response.item : record))
+    }));
+    return response.item;
   };
 
-  const deleteItem = (section, id) => {
-    const nextItems = data[section].filter((record) => record.id !== id);
-    persistSection(section, nextItems);
+  const deleteItem = async (section, id) => {
+    await apiRequest(`/api/admin/${section}/${id}`, { method: 'DELETE' });
+    setData((current) => ({ ...current, [section]: (current[section] || []).filter((record) => record.id !== id) }));
   };
 
   const value = useMemo(
     () => ({
       isAuthenticated,
+      adminUser,
       login,
       logout,
       data,
+      loading,
       sections: sectionNames,
       labels,
+      loadSection,
+      loadAllSections,
       addItem,
       editItem,
       deleteItem
     }),
-    [data, isAuthenticated]
+    [adminUser, data, isAuthenticated, loading]
   );
 
   return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>;

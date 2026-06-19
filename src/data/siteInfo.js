@@ -29,9 +29,9 @@ export const siteInfo = {
       'Welcome to Mater Dei Erudite School. At Mater Dei, we stand out by inspiring excellence, building character, and creating a future filled with purpose and opportunity for every child. Our goal is simple: to raise students who are academically strong, morally grounded, and ready to thrive in the world ahead. Our teachers are committed to making learning engaging, personal, and practical. We maintain high standards in both academics and discipline, while ensuring every student feels supported, respected, and encouraged to reach their full potential. Whether in the classroom, on the field, or in our extracurricular programs, we nurture curiosity, confidence, and integrity. Thank you for trusting us with your child’s education. I invite you to visit our campus, meet our team, and see how Mater Dei Erudite School can be the foundation for your child’s success.'
   },
   stats: [
-    { value: 250, suffix: '+', label: 'Students' },
-    { value: 15, suffix: '+', label: 'Teachers' },
-    { value: 7, suffix: '+', label: 'Years of Excellence' }
+    { value: 350, suffix: '+', label: 'Students' },
+    { value: 35, suffix: '+', label: 'Teachers' },
+    { value: 10, suffix: '+', label: 'Years of Excellence' }
     // TODO: Update homepage stats numbers here when they change.
   ]
 };

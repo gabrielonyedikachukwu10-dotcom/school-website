@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": "a2b86561-b102-4c2e-91af-3ca07eec745b",
+      "name": "Principal",
+      "email": "principal@materdei.local",
+      "passwordHash": "$2a$10$8hjTA9kuMtRxW6Vsvt7NcehA0nnmBB916kK7oD6NjKcI6RAcoCxXG",
+      "role": "admin",
+      "createdAt": "2026-05-28T02:52:58.634Z"
+    }
+  ],
+  "students": [],
+  "academic": [],
+  "logo": [],
+  "teachers": [],
+  "admissions": [],
+  "results": [],
+  "payments": [],
+  "events": [],
+  "news": [],
+  "gallery": [],
+  "settings": [],
+  "site_settings": [
+    {
+      "id": "default-site-settings",
+      "site_name": "Mater Dei Erudite School",
+      "logo_url": "/images/logo.png",
+      "updated_at": "2026-06-03T00:00:00.000Z"
+    }
+  ]
+}
+
+
+

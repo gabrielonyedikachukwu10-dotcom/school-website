@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { siteInfo } from '../../data/siteInfo';
+import { useSiteSettings } from '../../context/SiteSettingsContext';
 
 export default function Footer() {
+  const { logoUrl, siteName } = useSiteSettings();
+
   return (
     <footer className="border-t border-slate-200 bg-slate-950 pb-24 pt-12 text-slate-200 sm:pb-12">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 md:grid-cols-4 lg:px-8">
         <div className="md:col-span-2">
-          <img src={siteInfo.logo} alt="Mater Dei Erudite School logo" className="mb-4 h-16 w-16 rounded-full bg-white object-contain" />
-          <h2 className="font-heading text-xl font-bold text-white">{siteInfo.name}</h2>
+          <img src={logoUrl} alt={`${siteName} logo`} className="mb-4 h-16 w-16 rounded-full bg-white object-contain" />
+          <h2 className="font-heading text-xl font-bold text-white">{siteName}</h2>
           <p className="mt-2 max-w-md text-sm leading-6 text-slate-300">{siteInfo.motto}</p>
           <p className="mt-4 max-w-md text-sm leading-6 text-slate-300">
             A private school in Ota, Ogun State, nurturing excellence, character and purpose from nursery to senior secondary.

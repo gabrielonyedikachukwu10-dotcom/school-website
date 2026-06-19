@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, Moon, Sun, X, CreditCard } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from '../../hooks/useTheme';
-import { siteInfo } from '../../data/siteInfo';
+import { useSiteSettings } from '../../context/SiteSettingsContext';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -19,6 +19,7 @@ const navItems = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { logoUrl, siteName } = useSiteSettings();
   const { theme, toggleTheme } = useTheme();
 
   const linkClass = ({ isActive }) =>
@@ -32,9 +33,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Main navigation">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src={siteInfo.logo} alt="Mater Dei Erudite School logo" className="h-12 w-12 rounded-full object-contain" />
+          <img src={logoUrl} alt={siteName} className="h-16 w-16 rounded-full object-contain md:h-20 md:w-20" />
           <span className="max-w-[180px] font-heading text-sm font-bold leading-tight text-slate-950 dark:text-white sm:max-w-none sm:text-base">
-            {siteInfo.name}
+            {siteName}
           </span>
         </Link>
 

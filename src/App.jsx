@@ -4,7 +4,9 @@ import AdminLayout from './admin/components/AdminLayout.jsx';
 import ProtectedRoute from './admin/components/ProtectedRoute.jsx';
 import AdminDashboard from './admin/pages/AdminDashboard.jsx';
 import AdminLogin from './admin/pages/AdminLogin.jsx';
+import BrandingPage from './admin/pages/BrandingPage.jsx';
 import CrudPage from './admin/pages/CrudPage.jsx';
+import GalleryAdminPage from './admin/pages/GalleryAdminPage.jsx';
 import Header from './components/layout/Header.jsx';
 import Footer from './components/layout/Footer.jsx';
 import MobileQuickActions from './components/layout/MobileQuickActions.jsx';
@@ -69,14 +71,14 @@ export default function App() {
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="students" element={<CrudPage section="students" />} />
               <Route path="academic" element={<CrudPage section="academic" />} />
-              <Route path="logo" element={<CrudPage section="logo" />} />
+              <Route path="logo" element={<BrandingPage />} />
               <Route path="teachers" element={<CrudPage section="teachers" />} />
               <Route path="admissions" element={<CrudPage section="admissions" />} />
               <Route path="results" element={<CrudPage section="results" />} />
               <Route path="payments" element={<CrudPage section="payments" />} />
               <Route path="events" element={<CrudPage section="events" />} />
               <Route path="news" element={<CrudPage section="news" />} />
-              <Route path="gallery" element={<CrudPage section="gallery" />} />
+              <Route path="gallery" element={<GalleryAdminPage />} />
               <Route path="settings" element={<CrudPage section="settings" />} />
             </Route>
           </Route>
